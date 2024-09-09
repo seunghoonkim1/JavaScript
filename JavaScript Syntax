@@ -1,0 +1,31 @@
+# Commenting in Javascript
+- in line comment:
+use //
+ex) var number = 5; // in-line comment
+
+- multi line comment:
+/* this is a multi-line comment */
+start and end /* */
+
+# Data Types
+- undefined, null, boolean, string, number, symbol, object
+- variable (var / let / const)
+var can be used through whole program, let is for only the scope, const is a variable that you should never change.
+var myName = "Beau"
+myName = 8
+
+let ourName = "freeCodeCamp"
+
+const pi = 3.14
+
+# Storing values with the assignment operator
+var a;  <- declaring operator
+var b = 2;  <- declaring and assigning
+
+a = 7;  <- already declared so this is just assigning.
+
+console.log <- see things in console
+console.log(a) <- 7
+
+# Initializing Variables w/ Assignment Operator
+d
