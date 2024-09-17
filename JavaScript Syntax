@@ -28,4 +28,76 @@ console.log <- see things in console
 console.log(a) <- 7
 
 # Initializing Variables w/ Assignment Operator
-d
+
+# Incrementing Numbers
+var a=2;
+a++;          <- 3
+a--;          <- 1
+
+# Compound Assignment with Augmented Addition
+a+=1;
+a-=1;
+a*=1;
+a/=1;
+
+# Declare String variables
+var firstName = "Alan";
+
+# Quote
+var myStr= "I am a \"double quoted\" string inside \"double quotes\"";
+console.log(myStr)
+var myStr= 'I am a "double quoted" string inside "double quotes"';
+var myStr= `'I am a "double quoted" string inside "double quotes"'`; <- back ticks make single and double both usable.
+
+# Escape Sequences in Strings
+\'  single quote
+\"  double quote
+\\  backslash
+\n  newline
+\r carriage return
+\t tab
+\b backspace
+\f form feed
+
+var myStr = "FirstLine\n\t\\\SecondLine\nThirdLine"
+
+# Concatenating Strings with Plus Operator
+var ourStr = "I come first. " + "I come second.";
+
+# Concatenating Strings with Plus Equals Operator
+var ourStr = "I come first. ";
+ourStr += "I come second.";
+
+# Constructing Strings with Variables
+var ourName = "freeCodeCamp";
+var ourStr = "Hello, our name is " + ourName + ", how are you?";
+
+console.log(ourStr)
+
+# Appending Variables to Strings
+var anAdjective = "awesome!";
+var ourStr = "freeCodeCamp is ";
+ourStr += anAdjective;
+
+# Find Length of String
+var firstNameLength = 0;
+var firstNAme = "Ada";
+
+firstNameLength = firstName.length;
+
+# Bracket Notation
+var firstLetterOfFirstName = "";
+var firstName = "Ada";
+firstLetterOfFirstName = firstName[0];
+console.log(firstLetterofFirstName)
+
+# String Immutability
+var myStr = "Jello World";
+myStr[0] = "H";  <- We can't change individual letter but change the whole string
+myStr = "Hello World";
+
+# Bracket notation to find last letter
+var firstName = "Ada";
+var lastLetterOfFirstName = firstName[firstName.legnth - 1];
+var lastName = "LoveLace"
+var lastLetterOfLastName = lastName;
