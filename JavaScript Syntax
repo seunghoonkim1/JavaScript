@@ -98,6 +98,41 @@ myStr = "Hello World";
 
 # Bracket notation to find last letter
 var firstName = "Ada";
-var lastLetterOfFirstName = firstName[firstName.legnth - 1];
+var lastLetterOfFirstName = firstName[firstName.length - 1];
 var lastName = "LoveLace"
-var lastLetterOfLastName = lastName;
+var lastLetterOfLastName = lastName[lastName.length - 1];
+
+# Word Blanks
+function wordBlanks(myNoun, myAdjective, myVerb, myAdverb) {
+  var result = "";
+  result += "The " + myAdjective +" "+ myNoun +" "+ myVerb + " to the store " + myAdverb
+  return result;
+}
+console.log(wordBlanks("dog", "big", "ran", "quickly"));
+
+# Store Multiple Values with Arrays
+var ourArray = ["John", 23];
+var myArray = ["Quincy", 1];
+
+# Nested Array
+var ourArray = [["the Universe", 42], ["everything", 101010]];
+var myArray = [["Bulls", 23], ["white sox", 45]];
+
+# Access Array Data with Indexes
+var ourArray = [50,60,70];
+var ourData = ourArray[0];   <- 50
+
+# Modify Array Data with Indexes
+var ourArray = [18, 64, 99];
+ourArray[1] = 45;
+
+var myArray = [18, 64, 99];
+myArray[0] = 45;
+console.log(myArray)
+
+# Access Multi Dimensional Arrays with Indexes
+var myArray = [[1,2,3], [4,5,6], [7,8,9], [[10,11,12], 13, 14]];
+var myData = myArray[0][0];    <- 1
+console.log(myData)
+
+# Manipulate Arrays with push()
