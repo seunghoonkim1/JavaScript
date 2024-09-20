@@ -124,7 +124,7 @@ var ourData = ourArray[0];   <- 50
 
 # Modify Array Data with Indexes
 var ourArray = [18, 64, 99];
-ourArray[1] = 45;
+ourArray[1] = 45;           <- new array [18,45,99]
 
 var myArray = [18, 64, 99];
 myArray[0] = 45;
@@ -136,4 +136,45 @@ var myData = myArray[0][0];    <- 1
 console.log(myData)
 
 # Manipulate Arrays with push()
-d
+var ourArray = ["Stimpson", "J", "cat"];
+ourArray.push(["happy", "joy"]) <- new ourArray = ["Stimpson", "J", "cat", ["happy", "joy"]]
+push function pushes the array into the ourArray in the end
+
+# Manipulate Arrays with pop()
+var ourArray = [1,2,3];
+var removedFromOurArray = ourArray.pop() <- removedFromOurArray is 3 / ourArray is [1,2]
+
+var myArray = [["John", 23], ["cat", 2]];
+var removedFromMyArray = myArray.pop()
+console.log(myArray)  <- ["John", 23]
+
+# Manipulate Arrays with shift()
+var ourArray = ["Stimpson", "J", ["cat"]];
+var removedFromOurArray = ourArray.shift() <- removedFromOurArray is "Stimpson" / ourArray is ["J", ["cat"]]
+shift removes the first array
+
+# Manipulate Arrays with unshift()
+var ourArray = ["Stimpson", "J", "cat"];
+ourArray.shift();  <- ourArray equals ["J", "cat"]
+ourArray.unshift("Happy"); <- ourArray now equals ["Happy", "J", "cat"]
+unshift adds element to the beginning of array.
+
+var myArray = [["John", 23], ["dog", 3]];
+myArray.shift();
+myArray.unshift(["Paul", 35]);  <- myArray now equals [["Paul", 35], ["dog", 3]]
+
+# Shopping List (Nested Array)
+var myList = [["cereal", 3], ["milk", 2], ["banana", 3], ["juice", 2], ["eggs", 5]]
+
+# Write Reusable Code with Functions
+function ourReusableFunction() {
+  console.log("Heyya, World");        <- code between {} will be the main.
+}
+
+ourResuableFunction();   <- Heyya, World will come out.
+
+function resuableFunction() {
+  console.log("Hi World");
+}
+
+resuableFunction();    <- Hi World will come up.
