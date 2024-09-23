@@ -220,3 +220,27 @@ myLocalScope();
 console.log(myVar);           <- Reference Error: myVar is not defined. myVar is a local scope
 
 # Global vs Local Scope in Functions
+var outerWear = "T-Shirt";
+
+function myOutfit() {
+  var outerWear = "sweater";
+  return outerWear;
+}
+
+console.log(myOutfit());     <- result is sweater.
+console.log(outerWear);      <- result is T-shirt
+
+# Return a Value from a Function with Return
+function minusSeven(num) {
+  return num - 7;
+}
+
+console.log(minusSeven(10));      <- 3
+
+function timesFive(num) {
+  return num * 5;
+}
+
+console.log(timesFive(5));
+
+# Understanding Undefined Value Returned from a Function
