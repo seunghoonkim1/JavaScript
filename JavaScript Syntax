@@ -679,3 +679,99 @@ var playerNumber = 16;
 var player = testObj[playerNumber]; <- player is now Montana
 
 # Updating Object Property
+var ourDog = {
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"]
+};
+
+ourDog.name = "Happy Camper"; <- camper changes to happy camper
+
+var myDog = {
+  "name": "Coder",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["freeCodeCamp Campers"]
+};
+
+myDog.name = "Happy Coder";
+
+# Add New Properties to an Object
+var ourDog = {
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"]
+};
+ourDog.bark = "bow-wow";
+
+var myDog = {
+  "name": "Happy Coder",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["freeCodeCamp Campers"]
+};
+myDog['bark'] = "woof!"
+
+# Delete Properties From an Object
+var ourDog = {
+  "name": "Camper",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["everything!"]
+  "bark": "bow-wow"
+};
+
+delete ourDog.bark;
+
+var myDog = {
+  "name": "Happy Coder",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["freeCodeCamp Campers"]
+  "bark": "woof"
+};
+
+delete myDog.tails;
+
+# Using Objects for Lookups
+function phoneticLookup(va) {
+  var result = "";
+  switch(val) {
+    case "alpha":
+      result = "Adams";
+      break;
+    case "bravo":
+      result = "Boston";
+      break;
+    case "charlie";
+      result = "Chicago";
+      break;
+    case "delta":
+      result = "Denver";
+      break;
+    case "echo":
+      result = "Easy";
+      break;
+    case "foxtrot":
+      result = "Frank";
+}
+
+function phoneticLookup(va) {   <- using lookup instead of switch
+  var result = "";
+  var lookup = {
+    "alpha": "Adams",
+    "bravo": "Boston",
+    "charlie": "Chicago",
+    "delta": "Denver",
+    "echo": "Easy",
+    "foxtrot": "frank"
+  };
+  result = lookup[val]
+  return result;
+}
+
+cosole.log(phoneticLookup("charlie")); <- Chicago
+
+# Testing Objects for Properties
