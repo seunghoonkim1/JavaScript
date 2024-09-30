@@ -775,3 +775,10 @@ function phoneticLookup(va) {   <- using lookup instead of switch
 cosole.log(phoneticLookup("charlie")); <- Chicago
 
 # Testing Objects for Properties
+var myObj = {
+  gift: "pony",
+  pet: "kitten",
+  bed: "sleigh"
+}
+
+function 
