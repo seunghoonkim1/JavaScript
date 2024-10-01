@@ -975,3 +975,17 @@ var product = multiplyAll([[1,2], [3,4], [5,6,7]]);
 console.log(product);            <- 5040
 
 # Iterate with Do... While Loop
+var myArray = [];
+var i = 10;
+
+while (i < 5) {            <- This is a while loop. But a do while loop will do something and then go loop.
+  myArray.push(i);
+  i++;
+}
+
+do {                       <- This is a do while loop. do will do something at least once.
+  myArray.push(i);
+  i++;
+} while (i < 5)
+
+console.log(i, myArray);
