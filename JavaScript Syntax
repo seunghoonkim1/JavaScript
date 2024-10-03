@@ -1110,3 +1110,55 @@ function checkSign(num) P
 console.log(checkSign(10));
 
 # Differences Between the var and let keywords
+var catName = "Quincy";
+var quote;
+
+var cateName = "Beau";
+
+function catTalk() {
+  "use strict";
+
+  catName = "Oliver";
+  quote = catName + " says Meow!";
+
+}
+catTalk();
+
+let catName = "Quincy";
+let quote;
+
+catName = "Beau";        <- let catName = "Beau" will create an error because you're declaring catName twice.
+                            But catName = "Beau" will not be an error because it is not declaring but just setting the same variable to "Beau"
+
+# Compare Scopes of var and let keywords
+function checkScope() {
+"use strict";
+  let i = "function scope";
+  if (true) {
+    let i = "block scope";                     <- let has a scope. if it's var, var is a global scope.
+    console.log("Block scope i is: ", i);
+  }
+  console.log("Function scope i is: ", i);
+  return i;
+}
+
+checkScope();
+
+Block scope i is "block scope"
+Function scope i is: "function scope"
+
+function checkScope() {
+"use strict";
+  //let i = "function scope";
+  if (true) {
+    var i = "block scope";                     <- var results in both block scope because it's global. but let will be block scope & error
+    console.log("Block scope i is: ", i);         Why error? because i is not defined.
+  }
+  console.log("Function scope i is: ", i);
+  return i;
+}
+
+checkScope();
+
+Block scope i is "block scope"
+Function scope i is: "block scope"
