@@ -1295,9 +1295,11 @@ console.log(squaredIntegers);                                    <- [16, 1764, 3
 
 # Default Parameters
 const increment = (function() {
-  return function increment(number, value) {
+  return function increment(number, value = 1) {         <- value = 1 sets a default parameter so if there is a parameter specified like below 2, it applies two but not 1.
     return number + value;
   };
 })();
-console.log(increment(5, 2));
-console.log(increment(5));
+console.log(increment(5, 2));                             <- 7
+console.log(increment(5));                                <- 6
+
+# Use the Rest Operator with Function Parameters
