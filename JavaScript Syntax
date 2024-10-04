@@ -1162,3 +1162,135 @@ checkScope();
 
 Block scope i is "block scope"
 Function scope i is: "block scope"
+
+# Declare a Read-Only Variable with the const Keyword
+function printManyTimes(str) {
+  "use strict";
+
+  var sentence = str + " is cool!";
+  sentence = str + " is amazing!"
+  for(var i = 0l i < str.length; i +=2) {
+    console.log(sentence);
+  }
+
+}
+printManyTimes("freeCodeCamp");             <- freeCodeCamp is amazing!
+
+function printManyTimes(str) {
+  "use strict";
+
+  const SENTENCE = str + " is cool!";          <- const makes it read only so you can't reassign the variable. If you never want to reassign variable use const.
+  sentence = str + " is amazing!"                 for const variables, name it in ALL CAPS. 
+  for(let i = 0l i < str.length; i +=2) {      <- Also, mainly use const with let and not var.
+    console.log(sentence);
+  }
+
+}
+printManyTimes("freeCodeCamp");     <- Error: SyntaxError: unkown: "sentence" is read-only(/index.js:1)
+
+# Mutate and Array Declared with const
+const s = [5, 7, 2];                 <- While you cannot declare variable with const, you can mutate an array.
+function editInPlace() {
+  "use strict";
+  s = [2, 5, 7];
+
+}
+editInPlace();                       <- error S is read only.
+
+const s = [5, 7, 2];                 
+function editInPlace() {
+  "use strict";
+  //s = [2, 5, 7];
+  s[0] = 2;                          <- with index array you can reassign the const array components.
+  s[1] = 5;
+  s[2] = 7;
+}
+editInPlace();
+console.log(s)                       <- [2, 5, 7]
+
+# Prevent Object Mutation
+function freezeObj() {              There is a obj.freeze that prevents object mutation
+  "use strict";
+  const MATH_CONSTANTS = {          <- create const as an object. This can stil be changed
+    PI: 3.14
+  };
+
+  try {                             <- this is a try catch block and it's going to try what's in the first part of the block
+    MATH_CONSTANTS.PI = 99;            If there's an error it's going to go into the catch part and it's going to log it out.
+  } catch( ex ) {                      try changing match constants to 99.
+    console.log(ex);
+  }
+  return MATH_CONSTANTS.PI;
+}
+
+const PI = freezeObj();           
+console.log(PI);                    <- 99
+
+
+function freezeObj() {              There is a obj.freeze that prevents object mutation
+  "use strict";
+  const MATH_CONSTANTS = {
+    PI: 3.14
+  };
+
+Object.freeze(MATH_CONSTANTS);     <- THIS freezes MATH_CONSTANTS and when you try to change it, it gives out an error.
+
+  try {                            
+    MATH_CONSTANTS.PI = 99;        <- This part will not work and give out an error
+  } catch( ex ) {                  <- This catch part will catch the exception
+    console.log(ex);               <- This will log out the exception
+  }
+  return MATH_CONSTANTS.PI;
+}
+
+const PI = freezeObj();           
+console.log(PI);                    <- TypeError: Cannot assign to read only property 'PI' of object '#<Object>' (/index.js:13)
+
+# Use Arrow Functions to Write Concise Anonymous Functions
+var magic = function() {      <- This function is called an anonymous function. It doesn't have a name. It is assigned to a variable though.
+  return new Date();             When you have an anonymous function, you can convert it to an arrow function which makes it a little quicker to write.
+};
+
+var magic = () => {           <- This is the same thing as above.
+  return new Date();
+};
+
+var magic = () => new Date(); <- Same as above. No need to have { return }
+
+const magic = () => new Date(); <- just changed var to const
+
+# Write Arrow Functions with Parameters
+var myConcat = function(arr1, arr2) {         <- This is normal function with parameters
+  return  arr1.concat(arr2);
+};
+
+console.log(myConcat([1, 2], [3, 4, 5]));
+
+
+var myConcat = (arr1, arr2) => arr1.concat(arr2);   <- This is with Array function
+
+console.log(myConcat([1, 2], [3, 4, 5]));         <- [1, 2, 3, 4, 5]
+
+# Write Higher Order Arrow Functions
+const realNumberArray = [4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2];    <- array functions work well with higher order functions such as map, filter, reduce
+                                                                     map, filter, reduce take functions as arguments for processing collections of data.
+const squareList = (arr) => {                                        whenever one function takes another function as an argument it's good to use arrow function.
+  const squaredIntegers = arr;
+  return squaredIntegers;
+};
+
+const squaredIntegers = squareList(realNumberArray);
+console.log(squaredIntegers);
+
+
+const realNumberArray = [4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2];
+
+const squareList = (arr) => {                                      
+  const squaredIntegers = arr.filter(num => Number.isInteger(num) && num > 0).map(x => x * x);  <- if you have only have single argument, you don't need parenthesis for the argument.
+  return squaredIntegers;                                                                          filter command will filter to numbers more than zero and only an integer
+};                                                                                                 x means every element in the array.
+
+const squaredIntegers = squareList(realNumberArray);
+console.log(squaredIntegers);                                    <- [16, 1764, 36]
+
+# Default Parameters
