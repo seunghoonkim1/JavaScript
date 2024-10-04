@@ -1294,3 +1294,10 @@ const squaredIntegers = squareList(realNumberArray);
 console.log(squaredIntegers);                                    <- [16, 1764, 36]
 
 # Default Parameters
+const increment = (function() {
+  return function increment(number, value) {
+    return number + value;
+  };
+})();
+console.log(increment(5, 2));
+console.log(increment(5));
