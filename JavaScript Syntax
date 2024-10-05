@@ -1302,4 +1302,57 @@ const increment = (function() {
 console.log(increment(5, 2));                             <- 7
 console.log(increment(5));                                <- 6
 
+
 # Use the Rest Operator with Function Parameters
+const sum = (function() {
+  return function sum(x, y, z) {                 <- takes 3 arguments and summing them
+    const args = [x, y, z];
+    return args.reduce((a, b) => a + b, 0);
+  };
+})();
+console.log(sum(1, 2, 3));                       <- 6
+
+const sum = (function() {
+  return function sum(...args) {                 <- ... is the rest operator. it will convert everything that's passed in into one array and the array is called args.
+    return args.reduce((a, b) => a + b, 0);         we don't need const args=[x,y,z] anymore.
+  };
+})();
+console.log(sum(1, 2, 3));                       <- 6
+console.log(sum(1, 2, 3, 4));                    <- 10. We can pass any number of arguments.
+
+
+# Use the Spread Operator to Evaluate Arrays In-Place
+const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+let arr2;
+(function() {
+  arr2 = arr1;
+  arr1[0] = 'potato'
+})();
+console.log(arr2);                      <- ['potato', 'FEB', 'MAR', 'APR', 'MAY']
+
+const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+let arr2;
+(function() {
+  arr2 = [...arr1];                       <- spread operator is also ... but we can't just do arr2 = ...arr1
+  arr1[0] = 'potato'                         We put this inside brackets, which is an array, it will spread out the contents of arr1 into this new array.
+})();                                        we're making arr2 equal all of the contents of arr1 so they'll be different.
+console.log(arr2);                       <- compare to above result ['potato', 'FEB', 'MAR', 'APR', 'MAY'] here arr1 is copied and spread operator changed 
+                                            ['potato', 'FEB', 'MAR', 'APR', 'MAY'] to ['JAN', 'FEB', 'MAR', 'APR', 'MAY'].
+
+# Use Desctructuring Assignment to Assign Variables from objects
+var voxel = {x: 3.6, y: 7.4, z: 6.54};
+
+var x = voxel.x; // x = 3.6
+var y = voxel.y; // y = 7.4
+var z = voxel.z; // z = 6.54
+
+const { x: a, y : b, z : c } = voxel; //a = 3.6, b = 7.4, c = 6.54
+
+const AVG_TEMPERATURES = {
+  today: 77.5,
+  tomorrow: 79
+};
+
+function getTempOfTmrw(avgTemperatures) {
+  "use strict";
+  const tempoftomorrow = undefined;
