@@ -1371,8 +1371,73 @@ const LOCAL_FORECAST = {
 
 function getMaxOfTmrw(forecast) {
   "use strict";
-  const maxOfTomorrow = undefined;
+  const { tomorrow : { max : maxOfTomorrow }} = forecast;              <- destructured two times. 
   return maxOfTomorrow
 }
 
-console.log(getMaxOfTmrw(LOCAL_FORECAST));
+console.log(getMaxOfTmrw(LOCAL_FORECAST));                             <- 84.6
+
+# Use Destructing Assignment to Assign Variables from Arrays
+const [z, x] = [1, 2, 3, 4, 5, 6];                               <- difference between destructuring from arrays and destructuring from objects is that you cannot specify
+console.log(z, x);                                                  which element from the array to go into a variable. It just goes in order. so z, x will be 1 and 2
+
+const [z, x, , y] = [1, 2, 3, 4, 5, 6];           <- z will be 1, x 2, third element is skipped and y will be 4.
+
+let a = 8, b = 6;
+(() => {                                 <- defines an arrow function with no name(anonymous function). It takes no parameters and contains "use strict"; [a, b] = [b, a].
+  "use strict";
+  [a, b] = [b, a]                        <- This is using destructuring to switch places of a and b.
+})();                                    <- The parentheses () at the end mean "execute this function right now."
+console.log(a);                          <- 6
+console.log(b);                          <- 8
+
+# Use Destructuring Assignment with the Rest Operator
+const source = [1,2,3,4,5,6,7,8,9,10];       Use destructuring assignment with rest operator to reassign array elements.
+function removeFirstTwo(list) {
+
+  const [ , , ...arr] = list;
+
+  return arr;
+}
+const arr = removeFirstTwo(source);
+console.log(arr);                          <- [3,4,5,6,7,8,9,10]
+console.log(source);                       <- [1,2,3,4,5,6,7,8,9,10]
+
+# Use Destructuring Assignment to Pass an Object as a Function's Parameters
+const stats = {
+  max: 56.78,
+  standard_deviation: 4.34,
+  median: 34.54,
+  mode: 23.87,
+  min: -0.75,
+  average: 35.85
+};
+const half = (function() {
+
+  return function half(stat) {               
+    return (stats.max + stats.min) / 2.0;    <- when stats in the console.log gets passed in, it uses max and min
+  };
+
+})();
+console.log(stats);
+console.log(half(stats));                    <- 28.015
+
+const stats = {
+  max: 56.78,
+  standard_deviation: 4.34,
+  median: 34.54,
+  mode: 23.87,
+  min: -0.75,
+  average: 35.85
+};
+const half = (function() {
+
+  return function half({ max, min }) {       <- Same as above but when stats in the console.log gets passed in, it's destructured into just the max and min variables.
+    return (max + min) / 2.0;                   pass in only what we need. This is commonly used with API calls.
+  };
+
+})();
+console.log(stats);
+console.log(half(stats));                    <- 28.015
+
+# Create Strings using Template Literals
