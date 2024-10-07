@@ -1441,3 +1441,84 @@ console.log(stats);
 console.log(half(stats));                    <- 28.015
 
 # Create Strings using Template Literals
+const person = {                                     Template literals are a special type of string that makes creating complex strings easier.
+  name: "Zodiac Hasbro",                             you can put variables right in there and use single or double quotation marks inside as well.
+  age: 56                                            you can also make multiline strings.
+};
+
+const greeting = `Hello, my name is ${person.name}!  <- use backtick ` to create template literal. Dollar sign with curly braces mean javascript. 
+I am ${person.age} years old.`;
+
+console.log(greeting);
+
+const result = {
+  success: ["max-length", "no-amd", "prefer-arrow-functions"],
+  failure: ["no-var", "var-on-top", "linebreak"],
+  skipped: ["id-blacklist", "no-dup-keys"]
+};
+function makeList(arr) {
+  const resultDisplayArray = [];
+  for (let i=0; i < arr.length; i++){
+    resultDisplayArray.push(`<li class="text-warning">${arr[i]}</Li`)          <- <Li> stands for list item that represents individual items in a list. Class is a CSS Style.
+  return resultDisplayArray;
+
+const resultDisplayArray = makeList(result.failure);
+console.log(resultDisplayArray)                           <- ["<li class="text-warning">no-var</li>", "<li class="text-warning">var-on-top</li>", "<li class="text-warning">linebreak</li>"]
+
+
+# Write concise Object Literal Declarations Using Simple Fields
+const createPerson = (name, age, gender) => {       <- this arrow function takes 3 variables, name, age and gender and it's going to return an object below.
+
+  return {
+    name: name,
+    age: age,
+    gender: gender
+  };
+
+};
+console.log(createPerson("Zodiac Hasbro", 56, "male")); <- {name: "Zodiac Hasbro", age: 56, gender: "male"}
+
+const createPerson = (name, age, gender) => ({name, age, gender});       <- if key value pairs are the same like above we can shorten the code to this. 
+console.log(createPerson("Zodiac Hasbro", 56, "male")); <- {name: "Zodiac Hasbro", age: 56, gender: "male"}
+
+
+# Write concise Declarative Functions
+const bicycle = {
+  gear: 2,
+  setGear: function(newGear) {
+    "use strict";
+    this.gear = newGear;
+  }
+};
+
+bicycle.setGear(3);
+console.log(bicycle.gear);      <- 3
+
+const bicycle = {
+  gear: 2,
+  setGear (newGear) {           <- shorter way
+    "use strict";
+    this.gear = newGear;
+  }
+};
+
+bicycle.setGear(3);
+console.log(bicycle.gear);      <- 3
+
+
+# Use class syntax to define a constructor function
+var SpaceShuttle = function(targetPlanet){       <- constructor function to construct the object. SpaceShuttle is a function that is used as a constructor (called with new).
+  this.targetPlanet = targetPlanet;              <- this keyword refers to the current object being created. 
+}                                                   this.targetPlanet creates a property called targetPlanet in the new object and assigns it the value passed as the targetPlanet argument.
+var zeus = new SpaceShuttle('Jupiter');          <- instantiate an object using 'new' keyword. instantiating the spaceshuttle object.
+                                                    
+console.log(zeus.targetPlanet)                   <- Jupiter
+                                                    
+
+class SpaceShuttle {                             <- class syntax(here it's zeus) replaces the constructor function creation.
+  constructor(targetplanet){                        you can use class to define constructor functions more intuitively.
+    this.targetPlanet = targetPlanet;               class is syntactic sugar over the function-based constructor pattern.
+}
+var zeus = new SpaceShuttle('Juipter');
+
+console.log(zeus.targetPlanet)
