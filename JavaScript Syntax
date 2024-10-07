@@ -1507,6 +1507,12 @@ console.log(bicycle.gear);      <- 3
 
 
 # Use class syntax to define a constructor function
+                                                 <- constructor function is a special type of function used to create and initialize objects.
+                                                    When you call a function with the new keyword, JavaScript automatically:
+                                                    1. Creates a new object.
+                                                    2. Sets this to point to that new object.
+                                                    3. Initializes properties on the new object (using the this keyword inside the constructor function).
+                                                    4. Returns the new object.
 var SpaceShuttle = function(targetPlanet){       <- constructor function to construct the object. SpaceShuttle is a function that is used as a constructor (called with new).
   this.targetPlanet = targetPlanet;              <- this keyword refers to the current object being created. 
 }                                                   this.targetPlanet creates a property called targetPlanet in the new object and assigns it the value passed as the targetPlanet argument.
@@ -1518,7 +1524,23 @@ console.log(zeus.targetPlanet)                   <- Jupiter
 class SpaceShuttle {                             <- class syntax(here it's zeus) replaces the constructor function creation.
   constructor(targetplanet){                        you can use class to define constructor functions more intuitively.
     this.targetPlanet = targetPlanet;               class is syntactic sugar over the function-based constructor pattern.
+  }
 }
 var zeus = new SpaceShuttle('Juipter');
 
-console.log(zeus.targetPlanet)
+console.log(zeus.targetPlanet)                   <- Jupiter
+
+function makeClass() {
+  class Vegetable {
+    constructor(name) {
+      this.name = name;
+    }
+  }
+  return Vegetable;
+}
+const Vegetable = makeClass();
+const carrot = new Vegetable('carrot');
+console.log(carrot.name);                     <- carrot
+
+
+# Use getters and setters to Control Access to an Object
