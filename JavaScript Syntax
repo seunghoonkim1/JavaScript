@@ -1544,3 +1544,87 @@ console.log(carrot.name);                     <- carrot
 
 
 # Use getters and setters to Control Access to an Object
+class Book {                                <- often want to obtain values from the object and set a value of a property within an object. This is called getters and setters.
+  constructor(author) {
+    this._author = author;                  <- this word means that this variable is only accessible within this class here.
+  )
+  //getter
+  get writer(){                             <- get the writer. Getter functions get the value of an object's variable to the user without the user directly accessing the private variable.
+    return this._author;                    <- private variable is this _author that gets set when you construct the object. when we do get writer, this._author will be returned.
+  }                                            you are not directly interacting with the author. 
+  //setter
+  set writer(updatedAuthor){                <- set the writer. This could invoke calculations or even overriding the previous value completely.
+    this._author = updatedAuthor;              you can have any number of code lines in this setter to do different calculations before you set it or get the property.
+  }
+}
+
+- EXAMPLE -
+function makeClass() {
+  class Thermostat {
+    constructor(temp) {
+      this._temp = 5/9 * (temp - 32);       <- this is used so that it is only accessible within the class here.
+    }                                           _temp here the underscore generally signify it's a private variable. you're supposed to access it outside of the scope.
+    get temperature(){
+      return this._temp;                    <- returning this._temp will return celcius tempurature because we stored the value in celcius with the calculation above.
+    }
+    set temperature(updatedTemp){
+      this._temp = updatedTemp;
+    }
+  }
+  return Thermostat;                          
+}
+
+const Thermostat = makeClass();             <- returns Thermostat object from above function (return Thermostat)
+const thermos = new Thermostat(76);         <- instantiate an object you use the new keyword. new Thermostat(76) goes to the constructor(temp) and does the calculation.
+let temp = thermos.temperature;             <- thermos.temperature is going to use the getter which is get temperature. There are no parentheses after temperature here because it's a variable or property name and not a function. function has parentheses at the end.
+thermos.temperature = 26;                   <- Here is the setter.
+temp = thermos.temperature;
+console.log(temp);                          <- 26.
+
+
+# Undertand the differences between import and require
+before people used require function to import functions and code from other files.
+But now we have import and export.
+you can export code in one file and then import it in another file.
+It also allows you to only import certain functions from a file or certain variables.
+
+-File 1-
+const cap = capitalizeString("hello!");       <- we don't have a capitalizeString function here so we get an error.
+
+console.log(cap);
+
+-File 2-
+export const capitalizeString = str => str.toUpperCase()   <- export statement which exports a function. It has a arrow function and toUpperCase is a function that makes uppercase.
+
+-File 1-
+import { capitalizeString } from "./string_function"       <- ./ means the current directory. To import use import {} from ~
+const cap = capitalizeString("hello!");
+console.log(cap);                                          <- HELLO
+
+
+# Use export to Reuse a code block
+-File 1-
+const capitalizeString = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);  <- capitalizes the first letter of the string(string.CharAt(0).toUpperCase()) and leaves the rest as string lowercase.
+}
+
+export { capitalizeString };                               <- a little different way to export than the before.
+
+export const foo = "bar";                                  <- exporting the function and two variable. we can use these to import them in another file.
+export const bar = "foo";
+
+
+# Use * to Import Everything from a File
+import * as capitalizeStrings from "capitalize_strings";    <- import * as (use as to create an object to store everything) from "file name(this could need ./ if same directory)" 
+                                                               capitalizeStrings can be any name.
+
+
+# Create an Export Fallback with export default
+Export default is used if you only want to export one thing from a file.
+function subtract(x,y) {return x - y;}                      <- We're going to use this function
+export default function subtract(x,y) {return x - y;}       <- let's say this is my fallback export. fallback export is named exports.
+
+
+# Import a default Export
+import subtract from "math_functions"                       <- for importing default Export, you don't use curly braces (subtract)
+subtract(7,4);
